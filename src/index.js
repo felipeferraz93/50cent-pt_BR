@@ -52,7 +52,7 @@ async function intervalFunc() {
 
   if (checkHour >= 0
     && checkDone < 0
-    && agora.getMinutes() === 0
+    // && agora.getMinutes() === 0
     && lastValue !== ask
   ) {
     lastValue = ask;
@@ -75,7 +75,7 @@ async function intervalFunc() {
       html: htmltext(parsedFifty),
     }).then(() => console.log('The image was created successfully!'));
 
-    const message = `.\n📆 ${nowDate} - ⏰ ${hourNow} \n.\n💰 Cotação do Dolar agora: R$${askFormated} \n.`;
+    const message = `.\n📆 ${nowDate} - ⏰ ${hourNow} \n.\n💰 Cotação do Dólar agora: R$${askFormated} \n.`;
 
     console.log(message);
 
@@ -98,6 +98,8 @@ async function intervalFunc() {
         await client.post('statuses/update', status, (error, tweet, response) => {
           if (!error) {
             console.log('tweet feito com sucesso!');
+
+            done.push(horario)
           }
         });
       }
